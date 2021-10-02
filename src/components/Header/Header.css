@@ -1,7 +1,34 @@
 .Header {
-  background-color: #ccc;
+  background-color: #ddeaf6;
   padding: 1rem 1rem 1rem 5rem;
   font-size: 5em;
   text-align: left;
-  color: #eee;
+  color: #a5b4c2;
+}
+
+.title {
+  margin-left: 2rem;
+}
+
+@media (max-width: 490px) {
+  .Header {
+    padding: 1rem ;
+    font-size: 3em;
+    text-align: center;
+  }
+  .title {
+    margin-left: 0rem;
+  }
+}
+
+@media (max-width: 250px) {
+  .logo {
+    display: none;
+  }
+}
+
+
+
+.logo {
+  height: 1em;
 }
