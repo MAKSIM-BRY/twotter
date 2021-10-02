@@ -5,19 +5,21 @@ module.exports = {
     node: true,
   },
   parserOptions: {
-    parser: "babel-eslint",
+    parser: 'babel-eslint',
     ecmaVersion: 2020,
-    sourceType: "module",
+    sourceType: 'module',
   },
-  extends: ["plugin:react/recommended", "plugin:prettier/recommended"],
+  extends: ['plugin:react/recommended', 'plugin:prettier/recommended'],
   plugins: [],
   // add costum rules
   rules: {
-    "react/prop-types": 1,
-    "prettier/prettier": [
-      "error",
+    'react/prop-types': 1,
+    quotes: ['error', 'single'],
+    'prettier/prettier': [
+      'error',
       {
-        endOfLine: "auto",
+        endOfLine: 'auto',
+        singleQuote: true,
       },
     ],
   },
