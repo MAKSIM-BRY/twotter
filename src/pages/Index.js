@@ -1,5 +1,6 @@
 import React from 'react';
 import TwotCreator from '../components/TwotCreator/TwotCreator';
+import Twott from '../components/Twott/Twott';
 import { subscribeTwotts } from '../../src/firebase';
 import './Index.css';
 
@@ -35,6 +36,14 @@ class Index extends React.Component {
     return (
       <div className="Index">
         <TwotCreator />
+        {this.state.twottsArray.map((twott) => (
+          <Twott
+            key={twott._id}
+            ownerId={twott.ownerId}
+            twotContent={twott.twottContent}
+            twottTime={twott.twottTime}
+          />
+        ))}
       </div>
     );
   }

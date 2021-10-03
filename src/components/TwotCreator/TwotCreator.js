@@ -18,7 +18,6 @@ class TwotCreator extends React.Component {
 
   handleSubmitData(event) {
     event.preventDefault;
-    console.log(event);
   }
 
   render() {

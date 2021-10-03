@@ -1,0 +1,18 @@
+.Twott {
+  background-color: #ddeaf6;
+  padding: 1em;
+  margin: 1em;
+  border-radius: 5px;
+  text-align: left;
+  height: 5em;
+}
+
+.twottHeader {
+  display: flex;
+  justify-content: space-between;
+}
+
+.headerLabel {
+  font-size: 14px;
+  color:#7d9fbe;
+}
