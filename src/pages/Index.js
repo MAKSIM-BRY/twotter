@@ -1,25 +1,14 @@
 import React from 'react';
 import TwotCreator from '../components/TwotCreator/TwotCreator';
-import { db, getTwotts, subscribeTwotts } from '../../src/firebase';
-import { collection, onSnapshot } from 'firebase/firestore';
+import { subscribeTwotts } from '../../src/firebase';
 import './Index.css';
-
-// const Twott = firebase.firestore.collection('twotts');
-
-/*function Index() {
-  console.log(getTwotts());
-  return (
-    <div className="Index">
-      <TwotCreator />
-    </div>
-  );
-}*/
 
 class Index extends React.Component {
   constructor(props) {
     super(props);
     this.state = { twottsArray: [] };
   }
+
   componentDidMount() {
     subscribeTwotts((changes) => {
       changes.docChanges().forEach((change) => {
@@ -41,11 +30,10 @@ class Index extends React.Component {
       });
     });
   }
+
   render() {
-    console.log(this.state.twottsArray);
     return (
       <div className="Index">
-        {/*this.state.twottsArray[0].ownerId*/}
         <TwotCreator />
       </div>
     );

@@ -1,6 +1,6 @@
 // Import the functions you need from the SDKs you need
 import { initializeApp } from 'firebase/app';
-import { getAnalytics } from 'firebase/analytics';
+//import { getAnalytics } from 'firebase/analytics';
 import {
   getFirestore,
   collection,
@@ -24,22 +24,11 @@ const firebaseConfig = {
 
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
-const analytics = getAnalytics(app);
+// const analytics = getAnalytics(app);
 
 const db = getFirestore(app);
 
-export async function getTwotts() {
-  const twottsCol = collection(db, 'twotts');
-  const twottsSnapshot = await getDocs(twottsCol);
-  const twottsList = twottsSnapshot.docs.map((doc) => ({
-    ...doc.data(),
-    _id: doc.id
-  }));
-  return twottsList;
-}
-
 export function subscribeTwotts(callback) {
-  console.log(callback);
   onSnapshot(collection(db, 'twotts'), callback);
 }
 
