@@ -1,5 +1,6 @@
 .Header {
   background-color: #ddeaf6;
+  background-image: linear-gradient(#ddeaf6, #ebf3fa);
   padding: 1rem 1rem 1rem 5rem;
   font-size: 5em;
   text-align: left;
@@ -26,8 +27,6 @@
     display: none;
   }
 }
-
-
 
 .logo {
   height: 1em;

@@ -1,0 +1,50 @@
+.TwotCreator {
+  background-color: #ddeaf6;
+  padding: 1em;
+  margin: 1em;
+  border-radius: 5px;
+}
+
+.TwotContent {
+  border: none;
+  resize: none;
+  border-radius: 5px;
+  width: max-content;
+  display: block;
+  width: 100%;
+  height: 5em;
+  background-color: #f5f9fc;
+  outline: none;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.listeButtons {
+  text-align: right;
+}
+
+.SendButton {
+  color: #a5b4c2;
+  border-color: #a5b4c2;
+  background-color: #ebf3fa;
+  border-width: 3px;
+  border-radius: 100em;
+  box-shadow: none;
+  border-style: solid;
+  font-size: 14px;
+}
+
+.SendButton:hover {
+  color: #ebf3fa;
+  background-color: #a5b4c2;
+}
+
+.caracterCount {
+  text-align: right;
+  margin-bottom: 1em;
+  font-size: 14px;
+  color:#7d9fbe;
+}

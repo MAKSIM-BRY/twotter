@@ -2,3 +2,9 @@
   margin: 0 5em 0 5em;
   text-align: center;
 }
+
+@media (min-width: 1500px) {
+  .Index {
+    margin: 0 25% 0 25%;
+  }
+}
