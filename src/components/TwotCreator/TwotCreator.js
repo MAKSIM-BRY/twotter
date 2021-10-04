@@ -1,6 +1,6 @@
 import React from 'react';
 import './TwotCreator.css';
-import Button from '../Button/Button';
+import { addTwott } from '../../firebase';
 
 class TwotCreator extends React.Component {
   constructor(props) {
@@ -17,7 +17,9 @@ class TwotCreator extends React.Component {
   }
 
   handleSubmitData(event) {
-    event.preventDefault;
+    event.preventDefault();
+    addTwott(this.state.TwotContent);
+    this.setState({ TwotContent: '' });
   }
 
   render() {
@@ -26,6 +28,7 @@ class TwotCreator extends React.Component {
         <form onSubmit={this.handleSubmitData}>
           <textarea
             className="TwotContent"
+            value={this.state.TwotContent}
             onChange={this.handleUpdateTwotContent}
           />
           <div className="caracterCount">

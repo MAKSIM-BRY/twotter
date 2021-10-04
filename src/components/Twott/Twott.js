@@ -5,13 +5,14 @@ moment.locale('fr');
 import './Twott.css';
 
 function Twott({ twotContent, ownerId, twottTime }) {
-  console.log(moment(Date(twottTime.seconds)).format('mm:HH DD/MM/YYYY'));
   return (
     <div className="Twott">
       <div className="twottHeader">
         <span className="headerLabel">{ownerId}</span>
         <span className="headerLabel">
-          {moment(Date(twottTime.seconds)).format('mm:HH DD/MM/YYYY')}
+          {moment(new Date(1970, 0, 1).setSeconds(twottTime.seconds)).format(
+            'HH:mm DD/MM/YYYY'
+          )}
         </span>
       </div>
       {twotContent}
@@ -22,13 +23,13 @@ function Twott({ twotContent, ownerId, twottTime }) {
 Twott.defaultProps = {
   twotContent: '',
   ownerId: '000',
-  twottTime: 'ff'
+  twottTime: { seconds: 515656488465 }
 };
 
 Twott.propTypes = {
   twotContent: PropTypes.string,
   ownerId: PropTypes.string,
-  twottTime: PropTypes.string
+  twottTime: PropTypes.object
 };
 
 export default Twott;

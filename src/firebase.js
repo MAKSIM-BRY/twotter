@@ -5,7 +5,10 @@ import {
   getFirestore,
   collection,
   getDocs,
-  onSnapshot
+  doc,
+  onSnapshot,
+  setDoc,
+  addDoc
 } from 'firebase/firestore';
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
@@ -27,6 +30,15 @@ const app = initializeApp(firebaseConfig);
 // const analytics = getAnalytics(app);
 
 const db = getFirestore(app);
+
+export function addTwott(twott) {
+  const twottContent = {
+    ownerId: '00X',
+    twottTime: new Date(),
+    twottContent: twott
+  };
+  addDoc(collection(db, 'twotts'), twottContent);
+}
 
 export function subscribeTwotts(callback) {
   onSnapshot(collection(db, 'twotts'), callback);
