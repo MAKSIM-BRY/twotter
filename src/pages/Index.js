@@ -36,7 +36,7 @@ class Index extends React.Component {
     return (
       <div className="Index">
         <TwotCreator />
-        {this.state.twottsArray.map((twott) => (
+        {this.state.twottsArray.reverse().map((twott) => (
           <Twott
             key={twott._id}
             ownerId={twott.ownerId}

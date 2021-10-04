@@ -10,6 +10,13 @@ class TwotCreator extends React.Component {
     };
     this.handleUpdateTwotContent = this.handleUpdateTwotContent.bind(this);
     this.handleSubmitData = this.handleSubmitData.bind(this);
+    this.handleSendTwottEnter = this.handleSendTwottEnter.bind(this);
+  }
+
+  handleSendTwottEnter(event) {
+    if (event.key === 'Enter' && !event.shiftKey) {
+      this.handleSubmitData(event);
+    }
   }
 
   handleUpdateTwotContent(event) {
@@ -30,6 +37,7 @@ class TwotCreator extends React.Component {
             className="TwotContent"
             value={this.state.TwotContent}
             onChange={this.handleUpdateTwotContent}
+            onKeyPress={this.handleSendTwottEnter}
           />
           <div className="caracterCount">
             {this.state.TwotContent.length}/500

@@ -8,7 +8,10 @@ import {
   doc,
   onSnapshot,
   setDoc,
-  addDoc
+  addDoc,
+  query,
+  orderBy,
+  limitToLast
 } from 'firebase/firestore';
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
@@ -41,7 +44,8 @@ export function addTwott(twott) {
 }
 
 export function subscribeTwotts(callback) {
-  onSnapshot(collection(db, 'twotts'), callback);
+  const q = query(collection(db, 'twotts'), orderBy('twottTime'));
+  onSnapshot(q, callback);
 }
 
 export { db };
