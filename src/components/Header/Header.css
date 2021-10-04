@@ -11,7 +11,7 @@
   margin-left: 2rem;
 }
 
-@media (max-width: 490px) {
+@media (max-width:500px) {
   .Header {
     padding: 1rem ;
     font-size: 3em;

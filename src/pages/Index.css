@@ -8,3 +8,9 @@
     margin: 0 25% 0 25%;
   }
 }
+
+@media (max-width: 500px) {
+  .Index {
+    margin: 0 1em 0 1em;
+  }
+}
