@@ -4,15 +4,13 @@ import { initializeApp } from 'firebase/app';
 import {
   getFirestore,
   collection,
-  getDocs,
-  doc,
   onSnapshot,
-  setDoc,
   addDoc,
   query,
-  orderBy,
-  limitToLast
+  orderBy
 } from 'firebase/firestore';
+
+import { getAuth, signInWithPopup, GoogleAuthProvider } from 'firebase/auth';
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
 
@@ -30,9 +28,47 @@ const firebaseConfig = {
 
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
+
 // const analytics = getAnalytics(app);
 
 const db = getFirestore(app);
+
+const provider = new GoogleAuthProvider();
+provider.addScope('https://www.googleapis.com/auth/contacts.readonly');
+
+const auth = getAuth();
+
+export async function signInWithGoogle() {
+  // auth.signOut();
+  signInWithPopup(auth, provider)
+    .then((result) => {
+      // This gives you a Google Access Token. You can use it to access the Google API.
+      const credential = GoogleAuthProvider.credentialFromResult(result);
+      const token = credential.accessToken;
+      // The signed-in user info.
+      const user = result.user;
+      // ...
+      console.log(result);
+      console.log(credential);
+      console.log(token);
+      console.log(user);
+    })
+    .catch((error) => {
+      console.error(error);
+      // Handle Errors here.
+      const errorCode = error.code;
+      const errorMessage = error.message;
+      // The email of the user's account used.
+      const email = error.email;
+      // The AuthCredential type that was used.
+      const credential = GoogleAuthProvider.credentialFromError(error);
+      // ...
+    });
+}
+
+export async function logOut() {
+  auth.signOut().catch((err) => console.error(err));
+}
 
 export function addTwott(twott) {
   const twottContent = {
