@@ -1,59 +1,51 @@
-import React from 'react';
+import React, { useState } from 'react';
 import './TwotCreator.css';
 import { addTwott } from '../../firebase';
+import { useSelector } from 'react-redux';
 
-class TwotCreator extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      TwotContent: ''
-    };
-    this.handleUpdateTwotContent = this.handleUpdateTwotContent.bind(this);
-    this.handleSubmitData = this.handleSubmitData.bind(this);
-    this.handleSendTwottEnter = this.handleSendTwottEnter.bind(this);
-  }
+function TwotCreator() {
+  const [TwotContent, SetTwotContent] = useState('');
 
-  handleSendTwottEnter(event) {
-    if (event.key === 'Enter' && !event.shiftKey) {
-      this.handleSubmitData(event);
-    }
-  }
+  const userUid = useSelector((state) => state.connexionData.uid);
+  const userConnected = useSelector((state) => state.connexionData.connected);
 
-  handleUpdateTwotContent(event) {
-    this.setState({ TwotContent: event.target.value });
-  }
-
-  handleSubmitData(event) {
+  const handleSubmitData = (event) => {
     event.preventDefault();
-    addTwott(this.state.TwotContent);
-    this.setState({ TwotContent: '' });
-  }
+    addTwott(userUid, TwotContent);
+    SetTwotContent('');
+  };
 
-  render() {
-    return (
-      <div className="TwotCreator">
-        <form onSubmit={this.handleSubmitData}>
-          <textarea
-            className="TwotContent"
-            value={this.state.TwotContent}
-            onChange={this.handleUpdateTwotContent}
-            onKeyPress={this.handleSendTwottEnter}
+  const handleSendTwottEnter = (event) => {
+    if (event.key === 'Enter' && !event.shiftKey) {
+      handleSubmitData(event);
+    }
+  };
+
+  const handleUpdateTwotContent = (event) => {
+    SetTwotContent(event.target.value);
+  };
+
+  return (
+    <div className="TwotCreator">
+      <form onSubmit={handleSubmitData}>
+        <textarea
+          className="TwotContent"
+          value={TwotContent}
+          onChange={handleUpdateTwotContent}
+          onKeyPress={handleSendTwottEnter}
+        />
+        <div className="caracterCount">{TwotContent.length}/500</div>
+        <div className="listeButtons">
+          <input
+            className="SendButton"
+            type="submit"
+            name="Send"
+            value="Send"
           />
-          <div className="caracterCount">
-            {this.state.TwotContent.length}/500
-          </div>
-          <div className="listeButtons">
-            <input
-              className="SendButton"
-              type="submit"
-              name="Send"
-              value="Send"
-            />
-          </div>
-        </form>
-      </div>
-    );
-  }
+        </div>
+      </form>
+    </div>
+  );
 }
 
 export default TwotCreator;

@@ -64,9 +64,9 @@ export async function logOut(callBackSignOutDone) {
     .catch((err) => console.error(err));
 }
 
-export function addTwott(twott) {
+export function addTwott(ownerId, twott) {
   const twottContent = {
-    ownerId: '00X',
+    ownerId,
     twottTime: new Date(),
     twottContent: twott
   };
