@@ -7,9 +7,15 @@ function ConnexionButtons() {
   const [connected, setConnexion] = useState(false);
 
   const handleSubmitConnexion = (e) => {
-    setConnexion(!connected);
-    console.log(connected);
-    logOut();
+    if (!connected) {
+      signInWithGoogle(() => {
+        setConnexion(!connected);
+      });
+    } else {
+      logOut(() => {
+        setConnexion(!connected);
+      });
+    }
   };
 
   return (
@@ -18,7 +24,7 @@ function ConnexionButtons() {
         className="ConnexionButtons"
         onClick={handleSubmitConnexion.bind(this)}
       >
-        Connexion
+        {connected ? 'Déconnexion' : 'Connexion'}
       </button>
     </div>
   );

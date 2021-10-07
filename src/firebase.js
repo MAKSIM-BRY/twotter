@@ -38,7 +38,7 @@ provider.addScope('https://www.googleapis.com/auth/contacts.readonly');
 
 const auth = getAuth();
 
-export async function signInWithGoogle() {
+export async function signInWithGoogle(callBackSignInDone) {
   // auth.signOut();
   signInWithPopup(auth, provider)
     .then((result) => {
@@ -52,6 +52,7 @@ export async function signInWithGoogle() {
       console.log(credential);
       console.log(token);
       console.log(user);
+      callBackSignInDone();
     })
     .catch((error) => {
       console.error(error);
@@ -66,8 +67,13 @@ export async function signInWithGoogle() {
     });
 }
 
-export async function logOut() {
-  auth.signOut().catch((err) => console.error(err));
+export async function logOut(callBackSignOutDone) {
+  auth
+    .signOut()
+    .then(() => {
+      callBackSignOutDone();
+    })
+    .catch((err) => console.error(err));
 }
 
 export function addTwott(twott) {
