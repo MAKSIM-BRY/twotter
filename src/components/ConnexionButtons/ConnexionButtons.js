@@ -1,25 +1,39 @@
 import React, { useState } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
+import {
+  connexionGetter,
+  disconnexion
+} from '../../features/connexion/connexionSlice';
+
 import { signInWithGoogle, logOut } from '../../firebase';
 
 import './ConnexionButtons.css';
 
 function ConnexionButtons() {
-  const [connected, setConnexion] = useState(false);
+  const dispatch = useDispatch();
+  const profilPicture = useSelector((state) => state.connexionData.photoURL);
+  const connected = useSelector((state) => state.connexionData.connected);
 
-  const handleSubmitConnexion = (e) => {
+  const handleSubmitConnexion = () => {
     if (!connected) {
-      signInWithGoogle(() => {
-        setConnexion(!connected);
+      signInWithGoogle((userData) => {
+        dispatch(connexionGetter(userData));
       });
     } else {
       logOut(() => {
-        setConnexion(!connected);
+        dispatch(disconnexion());
       });
     }
   };
 
   return (
     <div className="Buttons">
+      <div>
+        {connected && (
+          <img className="logo" src={profilPicture} alt="ProfilPicture" />
+        )}
+      </div>
+
       <button
         className="ConnexionButtons"
         onClick={handleSubmitConnexion.bind(this)}
