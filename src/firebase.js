@@ -4,8 +4,10 @@ import {
   collection,
   onSnapshot,
   addDoc,
+  setDoc,
   query,
-  orderBy
+  orderBy,
+  doc
 } from 'firebase/firestore';
 
 import { getAuth, signInWithPopup, GoogleAuthProvider } from 'firebase/auth';
@@ -41,6 +43,8 @@ export async function signInWithGoogle(callBackSignInDone) {
         connected: true
       };
       callBackSignInDone(userDataFormated);
+      delete userDataFormated.connected;
+      addUser(userDataFormated);
     })
     .catch((error) => {
       console.error(error);
@@ -72,6 +76,14 @@ export function addTwott(twott) {
 export function subscribeTwotts(callback) {
   const q = query(collection(db, 'twotts'), orderBy('twottTime'));
   onSnapshot(q, callback);
+}
+
+export function addUser(userData) {
+  const uidOfUser = userData.uid;
+  delete userData.uid;
+  let dataOfUserWithoutUid = userData;
+  dataOfUserWithoutUid = { ...dataOfUserWithoutUid, createdAt: new Date() };
+  setDoc(doc(db, 'users', uidOfUser), dataOfUserWithoutUid);
 }
 
 export { db };
