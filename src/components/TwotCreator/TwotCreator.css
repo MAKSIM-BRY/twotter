@@ -48,3 +48,10 @@
   font-size: 14px;
   color:#7d9fbe;
 }
+
+
+@media (max-width: 500px) {
+  .buttonLabel {
+    display: none;
+  }
+}

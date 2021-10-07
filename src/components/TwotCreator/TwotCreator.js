@@ -3,6 +3,9 @@ import './TwotCreator.css';
 import { addTwott } from '../../firebase';
 import { useSelector } from 'react-redux';
 
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faPaperPlane } from '@fortawesome/free-solid-svg-icons';
+
 function TwotCreator() {
   const [TwotContent, SetTwotContent] = useState('');
 
@@ -36,12 +39,10 @@ function TwotCreator() {
         />
         <div className="caracterCount">{TwotContent.length}/500</div>
         <div className="listeButtons">
-          <input
-            className="SendButton"
-            type="submit"
-            name="Send"
-            value="Send"
-          />
+          <button className="SendButton" type="submit">
+            <FontAwesomeIcon icon={faPaperPlane} />{' '}
+            <span className="buttonLabel">Send</span>
+          </button>
         </div>
       </form>
     </div>
