@@ -86,4 +86,11 @@ export function addUser(userData) {
   setDoc(doc(db, 'users', uidOfUser), dataOfUserWithoutUid);
 }
 
+export function getNameFromUserUid(uid, callback) {
+  if (uid) {
+    const q = query(doc(db, 'users', uid));
+    onSnapshot(q, callback);
+  }
+}
+
 export { db };
