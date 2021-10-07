@@ -27,7 +27,7 @@ const app = initializeApp(firebaseConfig);
 const db = getFirestore(app);
 
 const provider = new GoogleAuthProvider();
-provider.addScope('https://www.googleapis.com/auth/contacts.readonly');
+// provider.addScope('https://www.googleapis.com/auth/contacts.readonly');
 
 const auth = getAuth();
 
