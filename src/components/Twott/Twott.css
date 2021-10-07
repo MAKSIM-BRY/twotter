@@ -16,3 +16,13 @@
   font-size: 14px;
   color:#7d9fbe;
 }
+
+.emptySpace{
+  flex-grow: 4;
+}
+
+.profilPicture {
+  height: 1.3em;
+  border-radius: 25em;
+  margin-right: 0.4em;
+}

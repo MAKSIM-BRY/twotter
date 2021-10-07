@@ -3,21 +3,25 @@ import PropTypes from 'prop-types';
 import moment from 'moment';
 moment.locale('fr');
 import './Twott.css';
-import { getNameFromUserUid } from '../../firebase';
+import { getDataFromUserUid } from '../../firebase';
 
 function Twott({ twotContent, ownerId, twottTime }) {
   const [ownerName, setOwnerName] = useState('XXX');
+  const [PhotoURL, setPhotoURL] = useState('');
 
   useEffect(() => {
-    getNameFromUserUid(ownerId, (snapshot) => {
+    getDataFromUserUid(ownerId, (snapshot) => {
       setOwnerName(snapshot.data().displayName);
+      setPhotoURL(snapshot.data().photoURL);
     });
   }, []);
 
   return (
     <div className="Twott">
       <div className="twottHeader">
+        <img className="profilPicture" src={PhotoURL} alt="PhotoURL" />
         <span className="headerLabel">{ownerName}</span>
+        <span className="emptySpace" />
         <span className="headerLabel">
           {moment(new Date(1970, 0, 1).setSeconds(twottTime.seconds)).format(
             'HH:mm DD/MM/YYYY'
