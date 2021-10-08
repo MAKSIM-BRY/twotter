@@ -1,8 +1,8 @@
 {
   "files": {
     "main.css": "/twotter/static/css/main.65ac48e3.chunk.css",
-    "main.js": "/twotter/static/js/main.efbc74b6.chunk.js",
-    "main.js.map": "/twotter/static/js/main.efbc74b6.chunk.js.map",
+    "main.js": "/twotter/static/js/main.16ee490a.chunk.js",
+    "main.js.map": "/twotter/static/js/main.16ee490a.chunk.js.map",
     "runtime-main.js": "/twotter/static/js/runtime-main.4273d721.js",
     "runtime-main.js.map": "/twotter/static/js/runtime-main.4273d721.js.map",
     "static/js/2.682814bd.chunk.js": "/twotter/static/js/2.682814bd.chunk.js",
@@ -17,6 +17,6 @@
     "static/js/runtime-main.4273d721.js",
     "static/js/2.682814bd.chunk.js",
     "static/css/main.65ac48e3.chunk.css",
-    "static/js/main.efbc74b6.chunk.js"
+    "static/js/main.16ee490a.chunk.js"
   ]
 }
