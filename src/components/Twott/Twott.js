@@ -6,6 +6,7 @@ import './Twott.css';
 import {
   getDataFromUserUid,
   addLikeOnTwott,
+  removeLike,
   getNumberOfLikesOfATwott
 } from '../../firebase';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -20,7 +21,11 @@ function Twott({ twottId, twotContent, ownerId, twottTime }) {
   const [nmbrLikes, setNmbrLikes] = useState('10');
   const userId = useSelector((state) => state.connexionData.uid);
   const likeTwott = () => {
-    addLikeOnTwott(twottId, userId);
+    if (Licked === false) {
+      addLikeOnTwott(twottId, userId);
+    } else {
+      removeLike(twottId, userId);
+    }
   };
 
   useEffect(() => {

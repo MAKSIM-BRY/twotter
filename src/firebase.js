@@ -105,6 +105,14 @@ export function addLikeOnTwott(twottId, userId) {
   }
 }
 
+export function removeLike(twottId, userId) {
+  if (twottId && userId) {
+    updateDoc(doc(db, 'twotts', twottId), {
+      likes: arrayRemove(userId)
+    });
+  }
+}
+
 export function getNumberOfLikesOfATwott(twottId, callback) {
   if (twottId) {
     const q = query(doc(db, 'twotts', twottId));
