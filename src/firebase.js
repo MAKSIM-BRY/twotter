@@ -68,7 +68,8 @@ export function addTwott(ownerId, twott) {
   const twottContent = {
     ownerId,
     twottTime: new Date(),
-    twottContent: twott
+    twottContent: twott,
+    likes: []
   };
   addDoc(collection(db, 'twotts'), twottContent);
 }

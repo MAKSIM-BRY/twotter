@@ -40,7 +40,7 @@ function TwotCreator() {
         <div className="caracterCount">{TwotContent.length}/500</div>
         <div className="listeButtons">
           <button className="SendButton" type="submit">
-            <FontAwesomeIcon icon={faPaperPlane} />{' '}
+            <FontAwesomeIcon icon={faPaperPlane} />
             <span className="buttonLabel">Send</span>
           </button>
         </div>

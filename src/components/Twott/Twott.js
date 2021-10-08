@@ -4,10 +4,21 @@ import moment from 'moment';
 moment.locale('fr');
 import './Twott.css';
 import { getDataFromUserUid } from '../../firebase';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import {
+  faHeart,
+  faHeartBroken,
+  faHeartbeat,
+  faKissWinkHeart,
+  faGrinHearts
+} from '@fortawesome/free-solid-svg-icons';
 
 function Twott({ twotContent, ownerId, twottTime }) {
   const [ownerName, setOwnerName] = useState('XXX');
   const [PhotoURL, setPhotoURL] = useState('');
+
+  const [Licked, setLicked] = useState(false);
+  const [nmbrLikes, setNmbrLikes] = useState('10');
 
   useEffect(() => {
     getDataFromUserUid(ownerId, (snapshot) => {
@@ -28,7 +39,13 @@ function Twott({ twotContent, ownerId, twottTime }) {
           )}
         </span>
       </div>
-      {twotContent}
+      <div className="twotContent">{twotContent}</div>
+      <div className="footer">
+        <div className={Licked ? 'hearthReaction licked' : 'hearthReaction'}>
+          <span className="numberLikes">{nmbrLikes > 0 && nmbrLikes}</span>
+          <FontAwesomeIcon icon={faHeart} onClick={() => setLicked(!Licked)} />
+        </div>
+      </div>
     </div>
   );
 }

@@ -26,3 +26,32 @@
   border-radius: 25em;
   margin-right: 0.4em;
 }
+
+.twotContent {
+  height: 3em;
+}
+
+.footer {
+  text-align: right;
+}
+
+.hearthReaction {
+  color: #7d9fbeaa
+}
+
+.hearthReaction:hover {
+  color: #7d9fbe;
+  cursor: pointer;
+}
+
+.licked {
+  color: #ae0fa6;
+}
+
+.licked:hover {
+  color: #ae0fa6aa;
+}
+
+.numberLikes {
+  margin-right: 5px;
+}
