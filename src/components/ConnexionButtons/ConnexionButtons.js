@@ -28,11 +28,13 @@ function ConnexionButtons() {
 
   return (
     <div className="Buttons">
-      <div>
-        {connected && (
-          <img className="logo" src={profilPicture} alt="ProfilPicture" />
-        )}
-      </div>
+      {connected && (
+        <img
+          className="profilPictureConnexion"
+          src={profilPicture}
+          alt="ProfilPicture"
+        />
+      )}
 
       <button
         className="ConnexionButtons"

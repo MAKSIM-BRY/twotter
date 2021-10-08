@@ -1,6 +1,37 @@
 .Buttons {
   position: absolute;
-  top: 0;
-  right: 0;
+  top: 10px;
+  right: 10px;
   display: flex;
+  
+}
+
+.ConnexionButtons {
+  color: #a5b4c2;
+  border-color: #a5b4c2;
+  background-color: #ebf3fa;
+  border-width: 3px;
+  border-radius: 100em;
+  height: 3rem;
+  box-shadow: none;
+  border-style: solid;
+  font-size: 1.4rem;
+}
+
+.profilPictureConnexion {
+  height: 3rem;
+  border-radius: 25em;
+  margin-right: 1.4rem;
+}
+
+@media (max-width:700px) {
+  .ConnexionButtons {
+    height: 1.3rem;
+    font-size: 0.4rem;
+  }
+  
+  .profilPictureConnexion {
+    height: 1.3rem;
+    margin-right: 0.4rem;
+  }
 }
