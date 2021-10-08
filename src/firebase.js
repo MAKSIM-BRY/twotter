@@ -7,7 +7,10 @@ import {
   setDoc,
   query,
   orderBy,
-  doc
+  doc,
+  updateDoc,
+  arrayUnion,
+  arrayRemove
 } from 'firebase/firestore';
 
 import { getAuth, signInWithPopup, GoogleAuthProvider } from 'firebase/auth';
@@ -90,6 +93,21 @@ export function addUser(userData) {
 export function getDataFromUserUid(uid, callback) {
   if (uid) {
     const q = query(doc(db, 'users', uid));
+    onSnapshot(q, callback);
+  }
+}
+
+export function addLikeOnTwott(twottId, userId) {
+  if (twottId && userId) {
+    updateDoc(doc(db, 'twotts', twottId), {
+      likes: arrayUnion(userId)
+    });
+  }
+}
+
+export function getNumberOfLikesOfATwott(twottId, callback) {
+  if (twottId) {
+    const q = query(doc(db, 'twotts', twottId));
     onSnapshot(q, callback);
   }
 }

@@ -41,6 +41,7 @@ class Index extends React.Component {
         {this.state.twottsArray.reverse().map((twott) => (
           <Twott
             key={twott._id}
+            twottId={twott._id}
             ownerId={twott.ownerId}
             twotContent={twott.twottContent}
             twottTime={twott.twottTime}
