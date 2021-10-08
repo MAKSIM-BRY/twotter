@@ -1,4 +1,4 @@
-.TwotCreator {
+.TwotCreator, .NotConnectedWarning {
   background-color: #ddeaf6;
   padding: 1em;
   margin: 1em;
@@ -50,8 +50,12 @@
 }
 
 
-@media (max-width: 500px) {
+@media (max-width: 250px) {
   .buttonLabel {
     display: none;
   }
+}
+
+.NotConnectedWarning {
+  text-align: center;
 }

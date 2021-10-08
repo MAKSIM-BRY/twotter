@@ -1,6 +1,8 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import TwotCreator from '../components/TwotCreator/TwotCreator';
 import Twott from '../components/Twott/Twott';
+import NotConnectedWarning from '../components/TwotCreator/NotConnectedWarning';
 import { subscribeTwotts } from '../../src/firebase';
 import './Index.css';
 
@@ -35,7 +37,7 @@ class Index extends React.Component {
   render() {
     return (
       <div className="Index">
-        <TwotCreator />
+        {this.props.connected ? <TwotCreator /> : <NotConnectedWarning />}
         {this.state.twottsArray.reverse().map((twott) => (
           <Twott
             key={twott._id}
@@ -48,5 +50,13 @@ class Index extends React.Component {
     );
   }
 }
+
+Index.defaultProps = {
+  connected: false
+};
+
+Index.propTypes = {
+  connected: PropTypes.bool
+};
 
 export default Index;
