@@ -10,6 +10,12 @@ class Index extends React.Component {
   constructor(props) {
     super(props);
     this.state = { twottsArray: [] };
+    this.sortTwotsByDate = this.sortTwotsByDate.bind(this);
+  }
+
+  sortTwotsByDate(arrayOfTwotts) {
+    arrayOfTwotts.sort((e) => e.twottTime.seconds).reverse();
+    return arrayOfTwotts;
   }
 
   componentDidMount() {
@@ -38,7 +44,7 @@ class Index extends React.Component {
     return (
       <div className="Index">
         {this.props.connected ? <TwotCreator /> : <NotConnectedWarning />}
-        {this.state.twottsArray.reverse().map((twott) => (
+        {this.sortTwotsByDate(this.state.twottsArray).map((twott) => (
           <Twott
             key={twott._id}
             twottId={twott._id}
